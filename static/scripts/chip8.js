@@ -1,8 +1,10 @@
 import Keyboard from "./keyboard.js";
 import Renderer from "./renderer.js";
+import Speaker from "./speaker.js";
 
 const keyboard = new Keyboard();
 const renderer = new Renderer(16);
+const speaker = new Speaker();
 
 let fps = 60;
 let loop, fpsInterval, startTime, now, then, elapsed;
@@ -33,7 +35,11 @@ function step() {
     elapsed = now - then;
 
     if (elapsed > fpsInterval) {
-        // Busywait... for now.
+        if (keyboard.isKeyPressed(keyboard.KEYMAP[0x1])) {
+            speaker.play(440);
+        } else {
+            speaker.stop();
+        }
     }
 
     loop = requestAnimationFrame(step);

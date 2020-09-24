@@ -39,7 +39,8 @@ class Keyboard {
      * @return {boolean} Flag indicating that the given key was pressed.
      */
     isKeyPressed(keyCode) {
-        return this.keysPressed(keyCode);
+        console.log(this.keyPressed);
+        return this.keysPressed[keyCode];
     }
 
     /**
@@ -50,7 +51,7 @@ class Keyboard {
      */
     onKeyDown(event) {
         let key = this.KEYMAP[event.which];
-        this.keyPressed[key] = true;
+        this.keysPressed[key] = true;
 
         // Apply 'next key' handler if one is present and then nullify it.
         if (this.onNextKeyPress !== null && key) {
