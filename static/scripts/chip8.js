@@ -1,9 +1,11 @@
+import Keyboard from "./keyboard.js";
 import Renderer from "./renderer.js";
 
+const keyboard = new Keyboard();
 const renderer = new Renderer(16);
 
 let fps = 60;
-let loop, fpsInterval, startTime, now, then, relapsed;
+let loop, fpsInterval, startTime, now, then, elapsed;
 
 /**
  * Enter the main rendering loop.
