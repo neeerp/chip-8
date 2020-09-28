@@ -1,10 +1,12 @@
 import Keyboard from "./keyboard.js";
 import Renderer from "./renderer.js";
 import Speaker from "./speaker.js";
+import CPU from "./cpu.js";
 
 const keyboard = new Keyboard();
 const renderer = new Renderer(16);
 const speaker = new Speaker();
+const cpu = new CPU(renderer, keyboard, speaker);
 
 let fps = 60;
 let loop, fpsInterval, startTime, now, then, elapsed;
@@ -17,11 +19,8 @@ function init() {
     then = Date.now();
     startTime = then;
 
-    // TODO: Remove this
-    renderer.testRenderer();
-    renderer.render();
-    // TODO: Remove this
-
+    cpu.loadSpritesIntoMemory();
+    cpu.loadRom('astro.ch8');
     loop = requestAnimationFrame(step);
 }
 
@@ -35,11 +34,7 @@ function step() {
     elapsed = now - then;
 
     if (elapsed > fpsInterval) {
-        if (keyboard.isKeyPressed(keyboard.KEYMAP[0x1])) {
-            speaker.play(440);
-        } else {
-            speaker.stop();
-        }
+        cpu.cycle();
     }
 
     loop = requestAnimationFrame(step);

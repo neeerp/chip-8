@@ -29,7 +29,6 @@ class Speaker {
 
             this.oscillator.connect(this.gain);
             this.oscillator.start();
-            console.log("hmmm");
         }
     }
 
@@ -41,7 +40,6 @@ class Speaker {
             this.oscillator.stop();
             this.oscillator.disconnect();
             this.oscillator = null;
-            console.log("Stopping");
         }
     }
 }
