@@ -6,3 +6,6 @@ At the moment, we are following a guide to implement the emulator
 in javascript. Once we implement it in javascript, we will go back
 and attempt to port the emulator into Rust and serve it using 
 WASM.
+
+
+** On hold for a bit while schools ramped up quite a bit :( **
