@@ -39,7 +39,6 @@ class Keyboard {
      * @return {boolean} Flag indicating that the given key was pressed.
      */
     isKeyPressed(keyCode) {
-        console.log(this.keyPressed);
         return this.keysPressed[keyCode];
     }
 
